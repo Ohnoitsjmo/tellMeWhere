@@ -44,7 +44,6 @@
       for (var i=0; i<conc.length; i++) {
         results.push([conc[i].name, conc[i].image_url, conc[i].location.display_address[0], conc[i].categories[0].title, conc[i].rating, conc[i].price]);
       }
-      console.log(results);
       var rand = Math.floor(Math.random() * conc.length);
       res.json({name: results[rand][0], image: results[rand][1], address: results[rand][2], category: results[rand][3], rating: results[rand][4], price: results[rand][5]})
     }).catch(e => {
