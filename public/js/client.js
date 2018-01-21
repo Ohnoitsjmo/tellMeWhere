@@ -20,18 +20,23 @@ navigator.geolocation.getCurrentPosition(function(location) {
 var client = {
 	displayResult: function(name, image, address, category, rating, price) {
 		console.log("Display Results.");
-		var html = $("#name").html();
 		$("#name").text("Name: ").append(name);
-		var html = $("#address").html();
+		var html = $("#name").html();
+		$("#name").html(html.replace(/Name:/gi, '<strong>$&</strong>'));
 		$("#address").text("Address: ").append(address);
-		var html = $("#category").html();
+		var html = $("#address").html();
+		$("#address").html(html.replace(/Address:/gi, '<strong>$&</strong>'));
 		$("#category").text("Category: ").append(category);
-		var html = $("#rating").html();
+		var html = $("#category").html();
+		$("#category").html(html.replace(/Category:/gi, '<strong>$&</strong>'));
 		$("#rating").text("Rating: ").append(rating);
-		var html = $("#price").html();
+		var html = $("#rating").html();
+		$("#rating").html(html.replace(/Rating:/gi, '<strong>$&</strong>'));
 		$("#price").text("Price: ").append(price);
-		var html = $("img").html();
+		var html = $("#price").html();
+		$("#price").html(html.replace(/Price:/gi, '<strong>$&</strong>'));
 		$("#img").attr('src', image);
+		var html = $("img").html();
 	},
 	isError: function() {
 		console.log("------ ERROR ------");
@@ -142,6 +147,9 @@ toggle between hiding and showing the dropdown content */
 				console.log("Timed Out.");
 			}
 		})
+	},
+	hidepicks: function() {
+		$(".polypicks").css("display","none");
 	}
 };
 
@@ -168,5 +176,6 @@ $(".catdropbtn").on("click", client.togglecat);
 $(".pricedropbtn").on("click", client.toggleprice);
 $(".ratingdropbtn").on("click", client.togglerating);
 $("#submit").on("click", client.submit);
+$("#submit").on("click", client.hidepicks);
 
 window.client = client;

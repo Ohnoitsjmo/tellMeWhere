@@ -36,11 +36,9 @@
   
 	router.post('/api/polypicks', function(req,res){
     console.log('------------ POST /api/polypicks ----------->');
-    console.log(searchRequest);
     client.search(searchRequest).then(response => {
       var conc = response.jsonBody.businesses;
       var prettyJson = JSON.stringify(conc, null, 4);
-      console.log(prettyJson);
   
       var results = [];
       for (var i=0; i<conc.length; i++) {
