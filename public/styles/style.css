@@ -18,8 +18,8 @@ body h2 {
 
 .card {
     box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
-    width: 40vmax;
-    height: 40vmax;
+    width: 40vw;
+    height: 40vh;
     transition: 0.3s;
     border-radius: 7px; /* 5px rounded corners */
     color: #000;
@@ -74,10 +74,10 @@ img {
     background-color: #4CAF50;
     color: white;
     padding: 16px;
-    font-size: 16px;
+    font-size: 20px;
     border: none;
     cursor: pointer;
-    width: 100px;
+    width: 8vw;
     border-radius: 7px;
 }
 
@@ -85,6 +85,7 @@ select {
     width: 30px;
     height: 56px;
     color: #000;
+    border-radius: 8px;
 }
 
 #submit {
