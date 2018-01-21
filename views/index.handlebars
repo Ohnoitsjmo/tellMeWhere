@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>polypicks</title>
+</head>
+<body>
+    <h2><b>polypicks</b></h2>
+    <div class=".container-fluid">
+        <div class="row">
+            <div class="col-md-3 radiusDropdown">
+                <button id="btn" class="radiusdropbtn">Radius</button>
+                <select size="3" id="myRadiusDropdown" class="dropdown-content">
+                    <option data-value="8000" value="5 miles">5 miles</option>
+                    <option data-value="16000" value="10 miles">10 miles</option>
+                    <option data-value="40000" value="25 miles">25 miles</option>
+                </select>
+            </div>
+            <div class="col-md-3 categoryDropdown">
+                <button id="btn" class="catdropbtn">Category</button>
+                <select size="3" id="myCategoryDropdown" class="dropdown-content">
+                    <option value="Chinese">Chinese</option>
+                    <option value="Mexican">Mexican</option>
+                    <option value="French">French</option>
+                </select>
+            </div>
+            <div class="col-md-3 priceDropdown">
+                <button id="btn" class="pricedropbtn">Price</button>
+                <select size="4" id="myPriceDropdown" class="dropdown-content">
+                    <option value="$">$</option>
+                    <option value="$$">$$</option>
+                    <option value="$$$">$$$</option>
+                    <option value="$$$$">$$$$</option>
+                </select>
+            </div>
+            <div class="col-md-3 ratingDropdown">
+                <button id="btn" class="ratingdropbtn">Rating</button>
+                <select size="5" id="myRatingDropdown" class="dropdown-content">
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                    <option value="4">4</option>
+                    <option value="5">5</option>
+                </select>
+            </div>
+        </div>
+    </div>
+    <div class="container">
+        <div class="card">
+            <img id="img">
+            <div class="content">
+                <p id="name"></p> 
+                <p id="address"></p> 
+                <p id="category"></p> 
+                <p id="rating"></p> 
+                <p id="price"></p>
+            </div>
+        <a id="submit" class="btn-round btn waves-effect waves-light"><i class="material-icons">send</i></a>
+        </div>
+    </div>
+</body>
+</html>
