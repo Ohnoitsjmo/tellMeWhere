@@ -29,7 +29,6 @@
 	app.use(bodyParser.text());
 	app.use(bodyParser.json({ type: 'application/vnd.api+json'}));
 
-
 	// logs each url that is requested, then passes it on.
 	app.use(function(req, res, next) {
     res.header('Access-Control-Allow-Origin', '*');

@@ -4,6 +4,19 @@ var categorySelect = document.getElementById('myCategoryDropdown');
 var priceSelect = document.getElementById('myPriceDropdown');
 var ratingSelect = document.getElementById('myRatingDropdown');
 
+navigator.geolocation.getCurrentPosition(function(location) {
+	$.ajax({
+		url: '/api/coordinates', //This is the current doc
+		type: "GET",
+		data: {latitude: location.coords.latitude, longitude: location.coords.longitude},
+		dataType: 'application/json',
+		success: function(data){
+			console.log(latitude);
+			console.log(longitude);
+		}
+	}) 
+});
+
 var client = {
 	displayResult: function(name, image, address, category, rating, price) {
 		console.log("Display Results.");
@@ -25,14 +38,6 @@ var client = {
 		$(".result h2").text("Oops. Error.");
 		$(".modal-header").css("background-color", "#e74c3c");
 	},
-	clearResults: function() {
-		$("#age").text("");
-		$("#agecertainty").text("");
-		$("#gender").text("");
-		$("#gendercertainty").text("");
-		$("#ethnicity").text("");
-		$("#ethnicitycertainty").text("");
-	},
 /* When the user clicks on the button, 
 toggle between hiding and showing the dropdown content */
 	toggleradius: function() {
@@ -50,56 +55,79 @@ toggle between hiding and showing the dropdown content */
 	radiusReplace: function() {
 		input = document.getElementsByClassName('radiusdropbtn');
 		$(input).text(radiusSelect.value);
+		client.radius();
 	},
 	categoryReplace: function() {
 		input = document.getElementsByClassName('catdropbtn');
 		$(input).text(categorySelect.value);
+		client.category();
 	},
 	priceReplace: function() {
 		input = document.getElementsByClassName('pricedropbtn');
 		$(input).text(priceSelect.value);
+		client.price();
 	},
 	ratingReplace: function() {
 		input = document.getElementsByClassName('ratingdropbtn');
 		$(input).text(ratingSelect.value);
+		client.rating();
 	},
-	radius: function(e) {
-		e.preventDefault();
+	radius: function() {
 		var radius = radiusSelect.data-value;
+		console.log(radius);
         $.ajax({
             url: '/api/radius', //This is the current doc
-            type: "POST",
-            data: ({radius: radius}),
+            type: "GET",
+			data: {radius: radius},
+			dataType: 'application/json',
             success: function(data){
                 console.log(data);
             }
 		}) 
 	},
-	location: function(e) {
-		e.preventDefault();
-		var latitude = $.getJSON("http://ip-api.io/api/json", function(data){
-            return data.latitude;
-        	}
-		);
-		var longitude = $.getJSON("http://ip-api.io/api/json", function(data){
-            return data.longitude;
-        	}
-		);
+	category: function() {
+		var category = categorySelect.value;
+		console.log(category);
         $.ajax({
-            url: '/api/location', //This is the current doc
-            type: "POST",
-            data: ({latitude: latitude, longitude: longitude}),
+            url: '/api/category', //This is the current doc
+            type: "GET",
+			data: {category: category},
+			dataType: 'application/json',
             success: function(data){
                 console.log(data);
             }
 		}) 
 	},
-	submit: function(e) {
-		e.preventDefault();
-		
+	price: function() {
+		var price = priceSelect.data-value;
+		console.log(price);
+        $.ajax({
+            url: '/api/price', //This is the current doc
+            type: "GET",
+			data: {price: price},
+			dataType: 'application/json',
+            success: function(data){
+                console.log(data);
+            }
+		}) 
+	},
+	rating: function() {
+		var rating = ratingSelect.value;
+		console.log(rating);
+        $.ajax({
+            url: '/api/rating', //This is the current doc
+            type: "GET",
+			data: {rating: rating},
+			dataType: 'application/json',
+            success: function(data){
+                console.log(data);
+            }
+		}) 
+	},
+	submit: function() {
 		$.ajax({
 			type: "POST",
-			url: "/api/poly2go",
+			url: "/api/polypicks",
 			timeout: 7000
 		}).done(function(result) {
 			if (result.error) {
@@ -116,11 +144,6 @@ toggle between hiding and showing the dropdown content */
 		})
 	}
 };
-
-navigator.geolocation.getCurrentPosition(function(location) {
-	console.log(location.coords.latitude);
-	console.log(location.coords.longitude);
-});
 
 window.onclick = function(event) {
 	if (!event.target.matches('.radiusdropbtn') && !event.target.matches('.catdropbtn') && !event.target.matches('.pricedropbtn') && !event.target.matches('.ratingdropbtn')) {

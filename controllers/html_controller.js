@@ -8,7 +8,7 @@
 	router.get("/", function(req, res) {
 		// res.redirect('/under-construction');
 		res.render('index', {
-			title: 'poly2go'
+			title: 'polypicks'
 		})
 	});
 
